@@ -1,0 +1,21 @@
+{
+	"name": "julienmiclo/folio-v18",
+	"type": "project",
+	"authors": [
+		{
+			"name": "julienmiclo",
+			"email": "julienmiclo@gmail.com"
+		}
+	],
+	"require": {
+		"slim/slim": "^3.12",
+		"slim/php-view": "^2.2",
+		"gumlet/php-image-resize": "^1.9",
+		"spatie/image-optimizer": "^1.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"App\\": "app/src/"
+		}
+	}
+}
