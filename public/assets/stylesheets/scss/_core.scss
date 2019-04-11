@@ -1,71 +1,68 @@
 //main: master.scss
 
-body{
-	width: 100vw;
-	height: 100vh;
-	font-family: $font-default;
-	font-size: $font-size;
-	line-height: 1;
-	background-color: $color-white;
-	overflow-x: hidden;
-	&.modal-active{
-		.main-container,
-		.navigation-wrapper{
-			overflow: hidden;
-		}
-	}
-	&:not(.modal-active){
-		.modal-container{
-			display: none;
-		}
-	}
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: $font-default;
+  font-size: $font-size;
+  line-height: 1;
+  background-color: $color-white;
+  overflow-x: hidden;
+  &.modal-active {
+    overflow: hidden;
+  }
+  &:not(.modal-active) {
+    .modal-container {
+      display: none;
+    }
+  }
 }
 
-.modal-container{
-	position: fixed;
-	z-index: 101;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	pointer-events: none;
-	overflow: hidden;
-	.modal{
-		pointer-events: all;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 100vw;
-		height: 100vh;
-		background-color: rgba(#000, .95);
-	}
+.modal-container {
+  position: fixed;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  .modal {
+    pointer-events: all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(#000, 0.95);
+  }
 }
 
-.main-container{
-	padding-left: 1rem;
-	padding-right: 1rem;
-	padding-bottom: .5rem;
-	grid{
-		margin-left: -.5rem;
-		margin-right: -.5rem;
-	}
-	picture{
-		display: block;
-		padding: .5rem;
-		cursor: pointer;
-		img{
-			border-radius: 4px;
-			&:not([src]){
-				visibility: hidden;
-			}
-			&:before{
-				font-size: 0;
-				display: block;
-				width: 100%;
-				border-radius: 4px;
-				padding-top: 100%;
-				background-color: $color-yellow;
-			}
-		}
-	}
+.main-container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
+  grid {
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+  }
+  picture {
+    display: block;
+    padding: 0.5rem;
+    cursor: pointer;
+    img {
+      border-radius: 4px;
+      &:not([src]) {
+        visibility: hidden;
+      }
+      &:before {
+        font-size: 0;
+        display: block;
+        width: 100%;
+        border-radius: 4px;
+        padding-top: 100%;
+        background-color: $color-yellow;
+      }
+    }
+  }
 }
