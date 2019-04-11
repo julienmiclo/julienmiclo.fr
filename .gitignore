@@ -1,3 +1,7 @@
+### Custom ###
+/public/content/uploads/*
+!/public/content/uploads/index.php
+
 # Created by https://www.gitignore.io/api/linux,composer
 # Edit at https://www.gitignore.io/?templates=linux,composer
 
