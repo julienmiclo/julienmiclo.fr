@@ -1,6 +1,8 @@
 # Created by https://www.gitignore.io/api/linux,composer
 # Edit at https://www.gitignore.io/?templates=linux,composer
 
+/public/content/
+
 ### Composer ###
 composer.phar
 /vendor/
