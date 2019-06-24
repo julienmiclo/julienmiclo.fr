@@ -10,7 +10,9 @@
 		<script type="text/javascript" src="<?php echo $baseUrl; ?>/assets/javascripts/master.js?v=1.0.0"></script>
 		<script type="text/javascript">
 			(function() {
-				var ll = new LazyLoad()
+				var ll = new LazyLoad({
+					elements_selector: ".lazyload"
+				})
 			})();
 		</script>
 	</body>
