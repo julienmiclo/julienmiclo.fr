@@ -1,0 +1,28 @@
+---
+import type {CollectionEntry} from 'astro:content';
+
+interface Props {
+    posts: CollectionEntry<'posts'>[];
+}
+
+const {posts} = Astro.props;
+---
+
+<ul class="group/list grid divide-y divide-gray-200">
+    {posts.map((post) => (
+		<li>
+			<a href={`/posts/${post.id}/`}
+			   class="group/item flex flex-col sm:flex-row sm:justify-between gap-1.5 py-3 transition-colors ease-in-out
+					  group-hover/list:not-hover:not-focus-visible:text-gray-500
+					  group-has-focus-visible/list:not-hover:not-focus-visible:text-gray-500">
+				<span
+					class="underline transition-colors group-hover/item:text-accent group-focus-visible/item:text-accent">{post.data.title}</span>
+				<div class="flex items-center gap-x-3 text-sm">
+					<time class="text-gray-500"
+						  datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString('fr-FR')}</time>
+					<span class="text-gray-600">{post.data.label}</span>
+				</div>
+			</a>
+		</li>
+    ))}
+</ul>

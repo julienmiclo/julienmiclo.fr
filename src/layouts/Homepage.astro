@@ -1,0 +1,234 @@
+---
+import Column from '@/components/layout/Column.astro';
+import Section from '@/components/layout/Section.astro';
+import HoverCard from '@/components/ui/HoverCard.astro';
+import Heading from '@/components/ui/Heading.astro';
+import Text from '@/components/ui/Text.astro';
+import PostList from '@/components/site/PostList.astro';
+import ButtonLink from '@/components/ui/ButtonLink.astro';
+import Icon from '@/components/ui/Icon.astro';
+
+import photo from '@/assets/images/photo-julien-miclo.jpg';
+
+import {getPosts, getIcons} from '@/utils/content';
+
+const posts = await getPosts();
+const icons = getIcons();
+---
+
+<Column as="main" id="main" align="center" class="min-h-dvh bg-surface overflow-hidden">
+	<Section id="about">
+		<div class="space-y-8 border-r-stone-500">
+			<Heading level={1}
+					 class="text-4xl min-[400px]:text-5xl sm:text-6xl leading-12 inline-block text-pretty hyphens-auto wrap-anywhere">
+				Bienvenue&nbsp;!
+			</Heading>
+			<div class="space-y-4 text-pretty">
+				<Text class="inline-block">Je suis
+					<HoverCard image={photo} alt="Photo de profil de Julien Miclo"><em
+						class="text-accent font-bold hover:underline">Julien</em></HoverCard>
+					, développeur web et
+					référent technique. Je code depuis plus de 20 ans, dont plus de 10 à concevoir
+					des sites et des applications web, du site institutionnel à la plateforme e-commerce.
+				</Text>
+				<Text class="inline-block">J’ai un profil hybride, à la fois créatif
+					et
+					technique. Formé au webdesign tout en étant déjà développeur, je fais le lien entre la maquette et
+					l’architecture. Je passe volontiers de Figma à WordPress ou Symfony. Entre les deux, une priorité
+					ne bouge pas : <strong>l’accessibilité</strong>.
+				</Text>
+			</div>
+		</div>
+	</Section>
+	<Section id="experience">
+		<div class="space-y-4">
+			<Heading>Expérience</Heading>
+			<ul class="flex flex-col gap-y-8">
+                {false && (
+					<li class="flex flex-col gap-y-2">
+						<Heading level={3}>Bloomind</Heading>
+						<ul class="flex flex-col gap-y-2 ps-4">
+							<li class="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-3">
+								<div class="flex flex-wrap gap-x-3">
+									<Text lang="en">Consultant Web Developer</Text>
+									<Text class="italic text-gray-600">@boursorama</Text>
+								</div>
+								<div class="flex items-center gap-3 sm:grow">
+									<div class="grow border-t border-gray-200"></div>
+									<div
+										class="flex items-center gap-2 rounded-3xl px-3 py-0.5 outline outline-gray-200">
+									<span class="relative flex size-1.5" aria-hidden="true">
+										<span
+											class="absolute inline-flex h-full w-full motion-safe:animate-ping motion-safe:[animation-iteration-count:4] rounded-full bg-accent opacity-75"></span>
+										<span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent"></span>
+									</span>
+										<Text size="sm">
+											aujourd'hui
+										</Text>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<a class="underline font-bold text-accent" target="_blank"
+						   href="https://bloomind.io"><span lang="en">website</span></a>
+					</li>
+                )}
+				<li class="flex flex-col gap-y-2">
+					<Heading level={3}>Billiotte & Co <span aria-hidden="true">&bull;</span> <small class="font-normal">12
+						ans</small></Heading>
+					<ul class="flex flex-col gap-y-2 ps-4">
+						<li class="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-3">
+							<Text lang="en">Lead Web
+								Developer
+							</Text>
+							<div class="flex items-center gap-3 sm:grow">
+								<div class="grow border-t border-gray-200"></div>
+								<div
+									class="flex items-center gap-2 rounded-3xl px-3 py-0.5 outline outline-gray-200">
+									<span class="relative flex size-1.5" aria-hidden="true">
+										<span
+											class="absolute inline-flex h-full w-full motion-safe:animate-ping motion-safe:[animation-iteration-count:4] rounded-full bg-accent opacity-75"></span>
+										<span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent"></span>
+									</span>
+									<Text size="sm">
+										aujourd'hui
+									</Text>
+								</div>
+                                {false && (
+									<div
+										class="rounded-3xl px-3 py-0.5 text-sm text-foreground bg-transparent outline outline-gray-200">
+										2024 ~ 2026
+									</div>
+                                )}
+							</div>
+						</li>
+						<li class="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-3">
+							<Text lang="en">
+								Full-stack
+								Developer
+							</Text>
+							<div class="flex items-center gap-3 sm:grow">
+								<div class="grow border-t border-gray-200"></div>
+								<div
+									class="rounded-3xl px-3 py-0.5 text-sm text-foreground bg-transparent outline outline-gray-200">
+									2019 ~ 2024
+								</div>
+							</div>
+						</li>
+						<li class="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-3">
+							<Text lang="en">Web
+								Developer
+							</Text>
+							<div class="flex items-center gap-3 sm:grow">
+								<div class="grow border-t border-gray-200"></div>
+								<div
+									class="rounded-3xl px-3 py-0.5 text-sm text-foreground bg-transparent outline outline-gray-200">
+									2014 ~ 2018
+								</div>
+							</div>
+						</li>
+					</ul>
+					<a class="underline font-bold text-accent" target="_blank"
+					   href="https://billiotte.fr"><span lang="en">website</span></a>
+				</li>
+			</ul>
+		</div>
+	</Section>
+	<Section id="skills">
+		<div class="space-y-4">
+			<Heading>Capacités</Heading>
+			<div class="flex gap-x-4">
+				<div class="flex flex-col gap-y-8 shrink-0">
+					<div class="flex flex-col gap-y-2">
+						<Heading level={3}>Développement</Heading>
+						<ul class="flex flex-col gap-y-2">
+							<li>
+								<Text size="sm">
+									WordPress
+								</Text>
+							</li>
+							<li>
+								<Text size="sm">
+									Symfony
+								</Text>
+							</li>
+							<li>
+								<Text size="sm">
+									Flutter
+								</Text>
+							</li>
+							<li>
+								<Text size="sm">
+									Vuejs/React
+								</Text>
+							</li>
+						</ul>
+					</div>
+					<div class="flex flex-col gap-y-2">
+						<Heading level={3}>Design</Heading>
+						<ul class="flex flex-col gap-y-2">
+							<li>
+								<Text size="sm">
+									Figma
+								</Text>
+							</li>
+							<li>
+								<Text size="sm">
+									a11y
+								</Text>
+							</li>
+						</ul>
+					</div>
+					<div class="flex flex-col gap-y-2">
+						<Heading level={3}>Management</Heading>
+						<ul class="flex flex-col gap-y-2">
+							<li>
+								<Text size="sm">
+									Gestion de projet Agile
+								</Text>
+							</li>
+							<li>
+								<Text size="sm">
+									Formations
+								</Text>
+							</li>
+							<li>
+								<Text size="sm">
+									Mentorat
+								</Text>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<ul class="flex flex-wrap gap-2">
+                {
+                    icons.map(({name, label, href}) => (
+						<li class="grow">
+							<a href={href}
+							   class="group/tooltip relative flex items-center justify-center p-3 bg-accent/8 text-accent rounded-xl text-[32px] transition-colors hover:bg-accent/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+								<Icon name={name} label={label}/>
+								<span aria-hidden="true"
+									  class="pointer-events-none invisible absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-md bg-foreground px-2 py-1 text-xs text-surface opacity-0 shadow-lg transition-[opacity,translate,visibility] duration-150 before:absolute before:inset-x-0 before:top-full before:h-2 tooltip-open:pointer-events-auto tooltip-open:visible tooltip-open:translate-y-0 tooltip-open:opacity-100">
+									{label}
+								</span>
+							</a>
+						</li>
+                    ))
+                }
+			</ul>
+		</div>
+	</Section>
+
+    {posts.length > 0 && (
+		<Section id="posts">
+			<div class="space-y-4">
+				<Heading>Articles</Heading>
+				<PostList posts={posts}/>
+				<div>
+					<ButtonLink href="/posts/">Tous les articles <span aria-hidden="true">→</span></ButtonLink>
+				</div>
+			</div>
+		</Section>
+    )}
+</Column>
