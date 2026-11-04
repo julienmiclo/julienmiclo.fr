@@ -1,0 +1,9 @@
+---
+import Base from '@/layouts/Base.astro';
+import Legal from '@/layouts/Legal.astro';
+import content from '@/data/content.json';
+---
+
+<Base title={`Mentions légales | ${content.meta.title}`} description={`Mentions légales du site de ${content.meta.title}.`}>
+	<Legal/>
+</Base>

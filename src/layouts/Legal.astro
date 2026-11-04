@@ -1,0 +1,33 @@
+---
+import Column from '@/components/layout/Column.astro';
+import Section from '@/components/layout/Section.astro';
+import Heading from '@/components/ui/Heading.astro';
+import Text from '@/components/ui/Text.astro';
+import ButtonLink from '@/components/ui/ButtonLink.astro';
+import {getContact} from "@/utils/content.ts";
+
+const {email, fullname} = getContact();
+---
+
+<Column as="main" id="main" align="center" class="min-h-dvh bg-surface overflow-hidden">
+	<Section id="mentions-legales" class="grow">
+		<div class="mb-10">
+			<ButtonLink href="/"><span aria-hidden="true">←</span> Retour à l'accueil</ButtonLink>
+		</div>
+		<Heading level={1} class="mb-10">Mentions légales</Heading>
+		<div class="space-y-8">
+			<div class="space-y-2">
+				<Heading>Éditeur</Heading>
+				<Text>{fullname}</Text>
+				<Text>E-mail :
+					<ButtonLink
+						href={`mailto:${email}`}>{email}</ButtonLink>
+				</Text>
+			</div>
+			<div class="space-y-2">
+				<Heading>Hébergeur</Heading>
+				<Text>Auto-hébergement</Text>
+			</div>
+		</div>
+	</Section>
+</Column>
