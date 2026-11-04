@@ -1,0 +1,69 @@
+---
+import Column from '@/components/layout/Column.astro';
+import Section from '@/components/layout/Section.astro';
+import Heading from '@/components/ui/Heading.astro';
+import Text from '@/components/ui/Text.astro';
+import ButtonLink from '@/components/ui/ButtonLink.astro';
+
+import {getContact} from '@/utils/content';
+
+const {email} = getContact();
+---
+
+<Column as="main" id="main" align="center" class="min-h-dvh bg-surface overflow-hidden">
+	<Section id="accessibilite" class="grow">
+		<div class="mb-10">
+			<ButtonLink href="/"><span aria-hidden="true">←</span> Retour à l'accueil</ButtonLink>
+		</div>
+		<Heading level={1} class="mb-10">Accessibilité</Heading>
+		<div class="space-y-8">
+			<div class="space-y-2">
+				<Heading>Engagement</Heading>
+				<Text>Je veux que ce site soit utilisable par tout le monde, quels que soient le matériel, le logiciel
+					ou la façon de naviguer. Il vise le niveau AA des <span lang="en">Web Content Accessibility
+						Guidelines</span> (WCAG) 2.2 et du Référentiel général d’amélioration de l’accessibilité
+					(RGAA) 4.1.2.
+				</Text>
+			</div>
+			<div class="space-y-2">
+				<Heading>État de conformité</Heading>
+				<Text>Ce site n’a pas encore fait l’objet d’un audit complet. Une auto-évaluation a été réalisée le
+					<time datetime="2026-11-03">3 novembre 2026</time>.
+				</Text>
+			</div>
+			<div class="space-y-2">
+				<Heading>Ce qui a été vérifié</Heading>
+				<ul class="list-disc space-y-2 ps-6 marker:text-accent">
+					<li><Text>Navigation au clavier : ordre logique, focus visible, lien d’évitement, aucun blocage.</Text></li>
+					<li><Text>Contrastes : au moins 4,5:1 pour le texte et 3:1 pour les icônes.</Text></li>
+					<li><Text>Affichage sur un écran de 320 pixels de large et zoom à 400 %, sans perte de contenu.</Text></li>
+					<li><Text>Espacement du texte agrandi (lignes, lettres, mots et paragraphes).</Text></li>
+					<li><Text>Infobulles et carte photo : elles se ferment avec Échap, et on peut les survoler sans
+						qu’elles disparaissent.</Text></li>
+					<li><Text>Structure : titres, listes, langue des passages en anglais et textes alternatifs des
+						images.</Text></li>
+				</ul>
+			</div>
+			<div class="space-y-2">
+				<Heading>Limites connues</Heading>
+				<ul class="list-disc space-y-2 ps-6 marker:text-accent">
+					<li><Text>Les tests avec des lecteurs d’écran (NVDA, JAWS, VoiceOver, TalkBack) restent à faire.</Text></li>
+					<li><Text>La validité du code HTML n’a pas encore été contrôlée avec le validateur du W3C.</Text></li>
+					<li><Text>Le mode de contraste élevé de Windows, Firefox et Safari n’ont pas encore été testés.</Text></li>
+				</ul>
+			</div>
+			<div class="space-y-2">
+				<Heading>Technologies utilisées</Heading>
+				<Text>HTML, CSS et JavaScript.</Text>
+			</div>
+			<div class="space-y-2">
+				<Heading>Signaler un problème</Heading>
+				<Text>Si un contenu vous est inaccessible, écrivez-moi à <ButtonLink
+					href={`mailto:${email}`}>{email}</ButtonLink> en précisant la page concernée et la difficulté
+					rencontrée. Je vous répondrai et corrigerai le problème dès que possible.
+				</Text>
+			</div>
+			<Text size="sm">Dernière mise à jour : <time datetime="2026-11-03">3 novembre 2026</time></Text>
+		</div>
+	</Section>
+</Column>

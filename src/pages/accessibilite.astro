@@ -1,0 +1,9 @@
+---
+import Base from '@/layouts/Base.astro';
+import Accessibility from '@/layouts/Accessibility.astro';
+import content from '@/data/content.json';
+---
+
+<Base title={`Accessibilité | ${content.meta.title}`} description={`Déclaration d’accessibilité du site de ${content.meta.title}.`}>
+	<Accessibility/>
+</Base>
