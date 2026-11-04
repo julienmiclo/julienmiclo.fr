@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "title": "Julien Miclo",
+    "description": "Julien Miclo, développeur web et référent technique : sites et applications web accessibles, de la maquette Figma au code WordPress ou Symfony."
+  },
+  "icons": [
+    {
+      "name": "php",
+      "label": "PHP",
+      "href": "https://www.php.net"
+    },
+    {
+      "name": "wordpress",
+      "label": "WordPress",
+      "href": "https://wordpress.org"
+    },
+    {
+      "name": "symfony",
+      "label": "Symfony",
+      "href": "https://symfony.com"
+    },
+    {
+      "name": "claude",
+      "label": "Claude",
+      "href": "https://claude.com"
+    },
+    {
+      "name": "git",
+      "label": "Git",
+      "href": "https://git-scm.com"
+    },
+    {
+      "name": "meilisearch",
+      "label": "Meilisearch",
+      "href": "https://www.meilisearch.com"
+    },
+    {
+      "name": "docker",
+      "label": "Docker",
+      "href": "https://www.docker.com"
+    },
+    {
+      "name": "vite",
+      "label": "Vite",
+      "href": "https://vite.dev"
+    },
+    {
+      "name": "react",
+      "label": "React",
+      "href": "https://react.dev"
+    },
+    {
+      "name": "astro",
+      "label": "Astro",
+      "href": "https://astro.build"
+    },
+    {
+      "name": "figma",
+      "label": "Figma",
+      "href": "https://www.figma.com"
+    },
+    {
+      "name": "archlinux",
+      "label": "Arch Linux",
+      "href": "https://archlinux.org"
+    },
+    {
+      "name": "apple",
+      "label": "Apple",
+      "href": "https://developer.apple.com"
+    }
+  ],
+  "contact": {
+    "fullname": "Julien Miclo",
+    "firstname": "Julien",
+    "lastname": "Miclo",
+    "email": "julienmiclo@gmail.com",
+    "links": [
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/julienmiclo"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/julienmiclo"
+      }
+    ]
+  }
+}
