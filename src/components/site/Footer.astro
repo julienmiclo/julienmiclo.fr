@@ -1,0 +1,27 @@
+---
+import Heading from '@/components/ui/Heading.astro';
+import Text from '@/components/ui/Text.astro';
+
+import {getContact} from '@/utils/content';
+
+const {links} = getContact();
+
+const focus = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white';
+---
+<footer id="contact" class="py-16 text-white">
+	<div class="mx-auto max-w-2xl px-4 sm:px-12">
+		<div class="space-y-6 border-x border-transparent px-6 sm:px-10">
+			<Heading>Contact</Heading>
+			<ul class="flex flex-wrap gap-x-6 gap-y-2">
+                {links.map(({label, href}) => (
+					<li><a class:list={['underline', focus]} href={href} target="_blank">{label}</a></li>
+                ))}
+			</ul>
+			<Text size="sm">
+				&copy; {new Date().getFullYear()} Julien Miclo <span aria-hidden="true">&bull;</span> <a
+				class:list={['underline', focus]} href="/mentions-legales/">Mentions légales</a> <span
+				aria-hidden="true">&bull;</span> <a class:list={['underline', focus]} href="/accessibilite/">Accessibilité</a>
+			</Text>
+		</div>
+	</div>
+</footer>

@@ -1,0 +1,57 @@
+---
+import {Font} from 'astro:assets';
+import Footer from '@/components/site/Footer.astro';
+import content from '@/data/content.json';
+import '@/assets/styles/global.css'
+
+interface Props {
+    title?: string;
+    description?: string;
+    type?: 'website' | 'article';
+}
+
+const {title, description, type = 'website'} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="fr" class="h-full scroll-smooth motion-reduce:scroll-auto">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+	<link rel="icon" href="/favicon.ico"/>
+
+	<Font cssVariable="--font-advercase" preload/>
+	<Font cssVariable="--font-jetbrains-mono" preload/>
+
+	<meta name="generator" content={Astro.generator}/>
+
+	<title>{title}</title>
+
+	<script src="../assets/scripts/global.js"></script>
+
+    {description &&
+		<meta name="description" content={description}/>}
+
+	<link rel="canonical" href={canonical}/>
+	<link rel="sitemap" href="/sitemap-index.xml"/>
+
+	<meta property="og:type" content={type}/>
+	<meta property="og:site_name" content={content.meta.title}/>
+	<meta property="og:locale" content="fr_FR"/>
+	<meta property="og:url" content={canonical}/>
+	<meta property="og:title" content={title}/>
+    {description &&
+		<meta property="og:description" content={description}/>}
+
+	<slot name="head"/>
+</head>
+<body class="relative min-h-full bg-accent text-foreground">
+<a href="#main"
+   class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-surface focus:px-4 focus:py-2 focus:font-bold focus:text-accent focus:outline-2 focus:outline-offset-2 focus:outline-accent">Aller
+	au contenu</a>
+<slot/>
+<Footer/>
+</body>
+</html>
