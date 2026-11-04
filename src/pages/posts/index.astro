@@ -1,0 +1,9 @@
+---
+import Base from '@/layouts/Base.astro';
+import Posts from '@/layouts/Posts.astro';
+import content from '@/data/content.json';
+---
+
+<Base title={`Articles | ${content.meta.title}`} description={`Tous les articles de ${content.meta.title}.`}>
+	<Posts/>
+</Base>

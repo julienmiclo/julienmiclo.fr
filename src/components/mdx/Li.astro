@@ -1,0 +1,12 @@
+---
+import type {HTMLAttributes} from 'astro/types';
+import {twMerge} from 'tailwind-merge';
+
+type Props = HTMLAttributes<'li'>;
+
+const {class: className, ...rest} = Astro.props;
+---
+
+<li class={twMerge('list-disc [ol>&]:list-decimal pl-2 marker:text-blue-500 [&>ul]:mt-3 [&>ol]:mt-3', className)} {...rest}>
+	<slot/>
+</li>
