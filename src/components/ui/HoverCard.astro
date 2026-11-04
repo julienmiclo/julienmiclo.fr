@@ -1,0 +1,22 @@
+---
+import type {ImageMetadata} from 'astro';
+import Image from '@/components/ui/Image.astro';
+
+interface Props {
+    image: ImageMetadata;
+    alt: string;
+}
+
+const {image, alt} = Astro.props;
+const id = `hovercard-${crypto.randomUUID()}`;
+---
+<span class="group/hovercard relative inline-block">
+    <button type="button" aria-describedby={id}
+			class="cursor-zoom-in rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+        <slot/>
+    </button>
+    <span id={id}
+		class="pointer-events-none invisible absolute bottom-full left-1/2 z-10 mb-2 w-48 -translate-x-1/2 translate-y-1 rounded-lg bg-surface p-1 opacity-0 shadow-lg transition-[opacity,translate,visibility] duration-150 before:absolute before:inset-x-0 before:top-full before:h-2 hovercard-open:pointer-events-auto hovercard-open:visible hovercard-open:translate-y-0 hovercard-open:opacity-100">
+        <Image src={image} alt={alt} width={384}/>
+    </span>
+</span>

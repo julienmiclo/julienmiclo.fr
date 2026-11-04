@@ -1,0 +1,24 @@
+---
+import type {HTMLAttributes, SvgComponent} from 'astro/types';
+import {twMerge} from 'tailwind-merge';
+
+interface Props extends HTMLAttributes<'svg'> {
+    name: string;
+    label?: string;
+}
+
+const icons = import.meta.glob<SvgComponent>('/src/assets/icons/*.svg', {eager: true, import: 'default'});
+
+const {name, label, class: className, ...rest} = Astro.props;
+const Svg = icons[`/src/assets/icons/${name}.svg`];
+
+if (!Svg) throw new Error(`Icône introuvable : ${name}`);
+---
+
+<Svg
+	class={twMerge('w-auto h-[1em] shrink-0', className)}
+	role={label ? 'img' : undefined}
+	aria-label={label}
+	aria-hidden={label ? undefined : 'true'}
+    {...rest}
+/>

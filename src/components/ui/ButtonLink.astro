@@ -1,0 +1,12 @@
+---
+import type {HTMLAttributes} from 'astro/types';
+import {twMerge} from 'tailwind-merge';
+
+type Props = HTMLAttributes<'a'>;
+
+const {class: className, ...rest} = Astro.props;
+---
+
+<a class={twMerge('underline font-bold text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent', className)} {...rest}>
+	<slot/>
+</a>

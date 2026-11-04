@@ -1,0 +1,24 @@
+---
+import type {HTMLAttributes} from 'astro/types';
+import {twMerge} from 'tailwind-merge';
+
+type Level = 1 | 2 | 3 | 4;
+
+interface Props extends HTMLAttributes<'h2'> {
+    level?: Level;
+}
+
+const styles: Record<Level, string> = {
+    1: 'text-3xl font-normal font-display',
+    2: 'text-2xl font-normal font-display',
+    3: 'text-base font-bold leading-5',
+    4: 'text-sm font-bold leading-5',
+};
+
+const {level = 2, class: className, ...rest} = Astro.props;
+const Tag = `h${level}` as const;
+---
+
+<Tag class={twMerge(styles[level], className)} {...rest}>
+	<slot/>
+</Tag>

@@ -1,0 +1,61 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types';
+import {
+	alignClasses,
+	combineStyles,
+	gapStyles,
+	mergeStyle,
+	responsive,
+	type Align,
+	type Breakpoint,
+	type Responsive,
+	type Spacing,
+} from '@/utils/layout';
+
+type Columns = number | string;
+
+type Props<Tag extends HTMLTag> = Polymorphic<{
+	as: Tag;
+	cols?: Responsive<Columns>;
+	gap?: Responsive<Spacing>;
+	gapX?: Responsive<Spacing>;
+	gapY?: Responsive<Spacing>;
+	align?: Align;
+}>;
+
+const colsClasses: Record<Breakpoint, string> = {
+	base: 'grid-cols-(--cols)',
+	sm: 'sm:grid-cols-(--cols-sm)',
+	md: 'md:grid-cols-(--cols-md)',
+	lg: 'lg:grid-cols-(--cols-lg)',
+	xl: 'xl:grid-cols-(--cols-xl)',
+};
+
+const toTemplate = (value: Columns) =>
+	typeof value === 'number' ? `repeat(${value}, minmax(0, 1fr))` : value;
+
+const {
+	as: Tag = 'div',
+	cols = 1,
+	gap,
+	gapX,
+	gapY,
+	align,
+	class: className,
+	style,
+	...rest
+} = Astro.props;
+
+const columns = typeof cols === 'object' ? { base: 1, ...cols } : cols;
+
+const layout = combineStyles(
+	responsive('cols', columns, colsClasses, toTemplate),
+	gapStyles({ gap, gapX, gapY }),
+);
+---
+
+<Tag
+	class:list={['grid', align && alignClasses[align], layout.classes, className]}
+	style={mergeStyle(layout.vars, style)}
+	{...rest}
+><slot /></Tag>

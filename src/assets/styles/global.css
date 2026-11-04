@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@custom-variant hovercard-open {
+  @media (hover: hover) {
+    &:is(:where(.group\/hovercard:not([data-dismissed])):hover *) {
+      @slot;
+    }
+  }
+  &:is(:where(.group\/hovercard:not([data-dismissed])):focus-within *) {
+    @slot;
+  }
+}
+
+@custom-variant tooltip-open {
+  @media (hover: hover) {
+    &:is(:where(.group\/tooltip:not([data-dismissed])):hover *) {
+      @slot;
+    }
+  }
+  &:is(:where(.group\/tooltip:not([data-dismissed])):focus-visible *) {
+    @slot;
+  }
+}
+
+@theme inline {
+  --font-display: var(--font-advercase);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --color-surface: oklch(98% .0054 95.1);
+  --color-foreground: #222222;
+  --color-accent: color(display-p3 0 0 1);
+}
+
+@layer components {
+  a[target="_blank"]:not(:has(svg, img), .no-external-icon)::after {
+    content: "";
+    content: "" / "(nouvel onglet)";
+    display: inline-block;
+    width: 0.8em;
+    height: 0.8em;
+    margin-inline-start: var(--spacing);
+    vertical-align: var(--spacing);
+    background-color: currentColor;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3C/svg%3E") no-repeat center / contain;
+  }
+}

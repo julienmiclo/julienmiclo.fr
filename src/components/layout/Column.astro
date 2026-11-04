@@ -1,0 +1,36 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types';
+import {
+	alignClasses,
+	justifyClasses,
+	gapStyles,
+	mergeStyle,
+	type Align,
+	type Justify,
+	type Responsive,
+	type Spacing,
+} from '@/utils/layout';
+
+type Props<Tag extends HTMLTag> = Polymorphic<{
+	as: Tag;
+	gap?: Responsive<Spacing>;
+	align?: Align;
+	justify?: Justify;
+}>;
+
+const { as: Tag = 'div', gap, align, justify, class: className, style, ...rest } = Astro.props;
+
+const gaps = gapStyles({ gap });
+---
+
+<Tag
+	class:list={[
+		'flex flex-col',
+		align && alignClasses[align],
+		justify && justifyClasses[justify],
+		gaps.classes,
+		className,
+	]}
+	style={mergeStyle(gaps.vars, style)}
+	{...rest}
+><slot /></Tag>

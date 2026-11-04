@@ -1,0 +1,19 @@
+---
+import type {HTMLAttributes} from 'astro/types';
+import {twMerge} from 'tailwind-merge';
+
+type Size = 'base' | 'sm';
+
+interface Props extends HTMLAttributes<'p'> {
+    size?: Size;
+}
+
+const styles: Record<Size, string> = {
+    base: 'text-base leading-6',
+    sm: 'text-sm leading-5',
+};
+
+const {size = 'base', class: className, ...rest} = Astro.props;
+---
+
+<p class={twMerge(styles[size], className)} {...rest}><slot/></p>
