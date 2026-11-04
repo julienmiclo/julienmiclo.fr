@@ -137,7 +137,7 @@ const icons = getIcons();
 	<Section id="skills">
 		<div class="space-y-4">
 			<Heading>Capacités</Heading>
-			<div class="flex gap-x-4">
+            {false && (
 				<div class="flex flex-col gap-y-8 shrink-0">
 					<div class="flex flex-col gap-y-2">
 						<Heading level={3}>Développement</Heading>
@@ -200,7 +200,8 @@ const icons = getIcons();
 						</ul>
 					</div>
 				</div>
-			</div>
+            )}
+
 			<ul class="flex flex-wrap gap-2">
                 {
                     icons.map(({name, label, href}) => (
