@@ -1,0 +1,19 @@
+---
+import Page from '@/layouts/Page.astro';
+import Text from '@/components/ui/Text.astro';
+
+interface Props {
+    code: number;
+    title: string;
+}
+
+const {code, title} = Astro.props;
+---
+
+<Page id="erreur" title={title}>
+	<meta slot="head" name="robots" content="noindex"/>
+	<Fragment slot="subtitle">
+		<Text size="sm" class="text-gray-600">Erreur {code}</Text>
+	</Fragment>
+	<Text><slot/></Text>
+</Page>

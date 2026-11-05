@@ -7,12 +7,12 @@ import sitemap from '@astrojs/sitemap';
 import {satteri} from '@astrojs/markdown-satteri';
 
 import {lede} from './src/utils/markdown/lede.mjs';
+import {errorPages} from './src/utils/integrations/error-pages.mjs';
 
 // https://astro.build/config
 export default defineConfig({
   // URL publique : sert aux URL absolues (canonique, Open Graph, plan du site).
   site: 'https://julienmiclo.fr',
-
   fonts: [
       {
           provider: fontProviders.local(),
@@ -54,6 +54,9 @@ export default defineConfig({
           // Directives (`:::lede` … `:::`) activées uniquement pour les fichiers .mdx.
           processor: satteri({features: {directive: true}, mdastPlugins: [lede]}),
       }),
-      sitemap(),
+      sitemap({
+          filter: (page) => !new URL(page).pathname.startsWith('/error/'),
+      }),
+      errorPages(),
   ],
 });
