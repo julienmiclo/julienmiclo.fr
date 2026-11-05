@@ -57,10 +57,8 @@ function initScrollMain(options = {}) {
    window.addEventListener("resize", schedule, { passive: true });
    reducedMotion.addEventListener("change", schedule);
 
-   const resizeObserver = new ResizeObserver(schedule);
+   const resizeObserver = new ResizeObserver(update);
    resizeObserver.observe(footer);
-
-   update();
 
    return () => {
       window.removeEventListener("scroll", schedule);
