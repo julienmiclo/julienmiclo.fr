@@ -47,6 +47,15 @@ export default defineConfig({
 
   vite: {
       plugins: [tailwindcss()],
+      build: {
+          rolldownOptions: {
+              output: {
+                  assetFileNames: ({names}) => names.some((name) => name.endsWith('.css'))
+                      ? '_astro/style.[hash][extname]'
+                      : '_astro/[name].[hash][extname]',
+              },
+          },
+      },
   },
 
   integrations: [
