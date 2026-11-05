@@ -13,6 +13,9 @@ import {errorPages} from './src/utils/integrations/error-pages.mjs';
 export default defineConfig({
   // URL publique : sert aux URL absolues (canonique, Open Graph, plan du site).
   site: 'https://julienmiclo.fr',
+  build: {
+      inlineStylesheets: 'always',
+  },
   fonts: [
       {
           provider: fontProviders.local(),
