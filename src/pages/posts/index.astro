@@ -1,9 +1,12 @@
 ---
-import Base from '@/layouts/Base.astro';
-import Posts from '@/layouts/Posts.astro';
+import Page from '@/layouts/Page.astro';
+import PostList from '@/components/site/PostList.astro';
 import content from '@/data/content.json';
+import {getPosts} from '@/utils/content';
+
+const posts = await getPosts();
 ---
 
-<Base title={`Articles | ${content.meta.title}`} description={`Tous les articles de ${content.meta.title}.`}>
-	<Posts/>
-</Base>
+<Page id="posts" title="Articles" description={`Tous les articles de ${content.meta.title}.`}>
+	<PostList posts={posts}/>
+</Page>

@@ -1,0 +1,48 @@
+---
+import Base from '@/layouts/Base.astro';
+import Column from '@/components/layout/Column.astro';
+import Section from '@/components/layout/Section.astro';
+import Heading from '@/components/ui/Heading.astro';
+import ButtonLink from '@/components/ui/ButtonLink.astro';
+import content from '@/data/content.json';
+
+interface Props {
+    id: string;
+    title: string;
+    description?: string;
+    type?: 'website' | 'article';
+    back?: { href: string; label: string };
+    as?: 'div' | 'article';
+}
+
+const {
+    id,
+    title,
+    description,
+    type,
+    back = {href: '/', label: "Retour à l'accueil"},
+    as: Tag = 'div',
+} = Astro.props;
+
+const hasSubtitle = Astro.slots.has('subtitle');
+---
+
+<Base title={`${title} | ${content.meta.title}`} description={description} type={type}>
+	<slot name="head" slot="head"/>
+	<Column as="main" id="main" align="center" class="min-h-dvh bg-surface overflow-hidden">
+		<Section id={id} class="grow" wave>
+			<div class="mb-10">
+				<ButtonLink href={back.href}><span aria-hidden="true">←</span> {back.label}</ButtonLink>
+			</div>
+			<Tag>
+				<Heading level={1} class={hasSubtitle ? 'mb-3' : 'mb-10'}>{title}</Heading>
+                {hasSubtitle &&
+					<div class="mb-10">
+						<slot name="subtitle"/>
+					</div>}
+				<slot/>
+			</Tag>
+			<slot name="after"/>
+		</Section>
+	</Column>
+</Base>

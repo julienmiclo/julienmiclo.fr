@@ -1,9 +1,27 @@
 ---
-import Base from '@/layouts/Base.astro';
-import Legal from '@/layouts/Legal.astro';
+import Page from '@/layouts/Page.astro';
+import Heading from '@/components/ui/Heading.astro';
+import Text from '@/components/ui/Text.astro';
+import ButtonLink from '@/components/ui/ButtonLink.astro';
 import content from '@/data/content.json';
+import {getContact} from '@/utils/content';
+
+const {email, fullname} = getContact();
 ---
 
-<Base title={`Mentions légales | ${content.meta.title}`} description={`Mentions légales du site de ${content.meta.title}.`}>
-	<Legal/>
-</Base>
+<Page id="mentions-legales" title="Mentions légales" description={`Mentions légales du site de ${content.meta.title}.`}>
+	<div class="space-y-8">
+		<div class="space-y-2">
+			<Heading>Éditeur</Heading>
+			<Text>{fullname}</Text>
+			<Text>E-mail :
+				<ButtonLink
+					href={`mailto:${email}`}>{email}</ButtonLink>
+			</Text>
+		</div>
+		<div class="space-y-2">
+			<Heading>Hébergeur</Heading>
+			<Text>Auto-hébergement</Text>
+		</div>
+	</div>
+</Page>

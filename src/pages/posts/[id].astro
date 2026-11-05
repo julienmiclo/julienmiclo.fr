@@ -1,9 +1,7 @@
 ---
 import type {GetStaticPaths, InferGetStaticPropsType} from 'astro';
 import {getCollection} from 'astro:content';
-import Base from '@/layouts/Base.astro';
 import Post from '@/layouts/Post.astro';
-import content from '@/data/content.json';
 
 export const getStaticPaths = (async () => {
     const posts = await getCollection('posts', ({data}) => import.meta.env.DEV || data.status !== 'draft');
@@ -16,22 +14,6 @@ export const getStaticPaths = (async () => {
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const {post} = Astro.props;
-
-const description = post.data.description ?? post.data.title;
-
-const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.data.title,
-    description,
-    url: new URL(Astro.url.pathname, Astro.site).href,
-    datePublished: post.data.date.toISOString(),
-    author: {'@type': 'Person', name: content.contact.fullname},
-};
 ---
 
-<Base title={`${post.data.title} | ${content.meta.title}`} description={description} type="article">
-	<script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}/>
-	<meta slot="head" property="article:published_time" content={post.data.date.toISOString()}/>
-	<Post item={post}/>
-</Base>
+<Post post={post}/>
