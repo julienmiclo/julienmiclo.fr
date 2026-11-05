@@ -1,16 +1,24 @@
 ---
 import type {HTMLAttributes} from 'astro/types';
 import {twMerge} from 'tailwind-merge';
+import Wave from '@/components/ui/Wave.astro';
 
 interface Props extends HTMLAttributes<'section'> {
     id: string;
+    /** Affiche le ruban décoratif en haut de la section (prévu pour la première section de la page). */
+    wave?: boolean;
 }
 
-const {id, class: className, ...rest} = Astro.props;
+const {id, wave = false, class: className, ...rest} = Astro.props;
+
+// Dans la première section, le ruban remonte dans le pt-48 (-mt-40) ; il s'étend d'une bordure de la colonne
+// à l'autre en annulant le padding horizontal (px-6 / sm:px-10).
+const waveClass = 'group-first-of-type/section:-mt-40 mb-8 -mx-6 w-[calc(100%+--spacing(12))] sm:-mx-10 sm:w-[calc(100%+--spacing(20))]';
 ---
 
 <section id={id} class={twMerge('group/section flex flex-col max-w-2xl w-full px-4 sm:px-12', className)} {...rest}>
 	<div class="w-full grow border-x border-accent px-6 sm:px-10 group-first-of-type/section:pt-48 pb-48">
+        {wave && <Wave class={waveClass}/>}
 		<slot/>
 	</div>
 </section>

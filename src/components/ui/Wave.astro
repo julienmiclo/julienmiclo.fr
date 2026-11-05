@@ -1,0 +1,22 @@
+---
+import type {HTMLAttributes} from 'astro/types';
+import {twMerge} from 'tailwind-merge';
+
+type Props = HTMLAttributes<'svg'>;
+
+// Ruban décoratif. Ses extrémités sont coupées à la verticale pour venir buter contre les bordures de la colonne :
+// la largeur de la viewBox correspond exactement au bord droit du tracé.
+const {class: className, ...rest} = Astro.props;
+---
+
+<svg
+	viewBox="0 0 557.639 215"
+	fill="currentColor"
+	aria-hidden="true"
+	focusable="false"
+	class={twMerge('block h-auto w-full text-accent', className)}
+    {...rest}
+>
+	<path
+		d="M519.907 212.769C536.577 208.866 548.557 199.498 557.639 188.457L557.639 64.5241C505 57.0241 484.5 99.0241 491.331 120.052C493.889 130.976 507.28 147.468 493.028 159.062C453.303 191.398 361.991 61.9443 280.038 81.131C241.5 90.1534 233.824 141.906 202.748 133.58C166.181 123.777 179.83 12.0445 5.83525e-05 0L0 107.159C1.68936 106.654 17.9999 103.025 28.7579 99.4536C134.781 74.632 147.103 211.352 232.64 191.327C268.13 183.018 294.026 145.179 330.558 136.627C410.058 118.014 441.595 231.102 519.907 212.769Z"/>
+</svg>
